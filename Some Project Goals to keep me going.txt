@@ -1,0 +1,29 @@
+Some Project Goals to keep me going
+
+Some Top Tier Ideas
+= ! = Stats Tracker for making a graph of bedwars stats. I doooo love graphs and numbers = ! = 
+[ ] Track FKDR over time on a graph
+[ ] Track Total Wins
+[ ] Track Final Kills
+[ ] Track Normal Kills
+[ ] Track Bed Breaks
+[ ] Compare to stats of other tracker players
+[ ] Make it look cool (lol "Minecraft stats mod and cool" smh my head)
+
+[ ] Bedwars stats mod
+[ ] Bedwars Quick Shop shower
+[ ] Duels Inventory setting
+[ ] Duels Other Information
+[ ] Skywars Stats
+[ ] Stats compare between two players in bedwars
+[ ] Stats compare between two players in Skywars
+[ ] Leaderboard information retreiver
+[ ] If I do things with discord too, make a help command.
+[ ] Overall stats
+[ ] Overall Profile
+[ ] Abyss Bedwars score as part of a stat = (FKDR^2 * Star)
+[ ] About Creator Command
+[ ] Stats per mode
+[ ] 
+[ ] 
+[ ] 
