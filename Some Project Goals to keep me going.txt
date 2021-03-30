@@ -10,6 +10,8 @@ Some Top Tier Ideas
 [ ] Compare to stats of other tracker players
 [ ] Make it look cool (lol "Minecraft stats mod and cool" smh my head)
 
+[ ] Use Epoch time to show last log in of player
+
 [ ] Bedwars stats mod
 [ ] Bedwars Quick Shop shower
 [ ] Duels Inventory setting

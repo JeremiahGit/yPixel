@@ -7,12 +7,17 @@
 # confuseddd.                                                                                                         #
 #                                                                                                                     #
 # P.S. Look at this fancy box!                                                                                        #
+# Look at THIS fancy Documentation website! [https://pkg.go.dev/github.com/t1ra/hypixel/structs]                      #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
+# https://hypixel.net/threads/hypixel-api-rate-limit-big-problem.3996327/page-2#post-29013586
 import requests
 import json
+import bwStats
 from pprint import pprint
 
+#
+# Returns a json string???
+#
 def getInfo(call):
     r = requests.get(call)
     return r.json()
@@ -24,10 +29,16 @@ uuid_dashed = "d6544c1cd8d94140beafb52e4e7d09c0"
 
 API_KEY = "961552cb-f9e4-4f25-b7dd-1cad11fe4f3d"  # Dont push with this aaaaa. and if I do just get a new key for my acc. Not that hard to do
                                                   # Currently Looking into a way to not have to deal with this.
+                                                  # LOL i pushed with this right after I said I wouldn't push with it. I need to change it now...
 
 name_link = f"https://api.hypixel.net/player?key={API_KEY}&name={name}"
 uuid_link = f"https://api.hypixel.net/player?key={API_KEY}&name={uuid_dashed}"
 
 #pprint(getInfo(name_link))
 #pprint(uuid_link)
-print(name_link)
+print(uuid_link)
+playerInfo = getInfo(uuid_link)
+
+if(playerInfo["success"]):
+    print(bwStats.sayHi())
+    print(playerInfo["_id"])
