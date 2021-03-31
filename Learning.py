@@ -36,11 +36,11 @@ uuid_link = f"https://api.hypixel.net/player?key={API_KEY}&name={uuid_dashed}"
 
 #pprint(getInfo(name_link))
 #pprint(uuid_link)
-#print(uuid_link)
+print(uuid_link)
 #playerInfo = getInfo(uuid_link)
 
-playerInfo = open("Youngthanael.json","rt")
+playerInfo = json.load(open("Youngthanael.json","rt"))
 
 if(playerInfo["success"]):
+    print(playerInfo["player"]["stats"]["Bedwars"]["bedwars_boxes"])
     print(bwStats.sayHi())
-    print(playerInfo["_id"])
