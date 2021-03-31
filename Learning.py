@@ -16,7 +16,7 @@ import bwStats
 from pprint import pprint
 
 #
-# Returns a json string???
+# Returns a json
 #
 def getInfo(call):
     r = requests.get(call)
@@ -36,8 +36,10 @@ uuid_link = f"https://api.hypixel.net/player?key={API_KEY}&name={uuid_dashed}"
 
 #pprint(getInfo(name_link))
 #pprint(uuid_link)
-print(uuid_link)
-playerInfo = getInfo(uuid_link)
+#print(uuid_link)
+#playerInfo = getInfo(uuid_link)
+
+playerInfo = open("Youngthanael.json","rt")
 
 if(playerInfo["success"]):
     print(bwStats.sayHi())
