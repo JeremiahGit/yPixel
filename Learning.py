@@ -13,7 +13,6 @@
 import requests
 import json
 import bwStats
-from pprint import pprint
 
 #
 # Returns a json
@@ -41,15 +40,14 @@ uuid_link = f"https://api.hypixel.net/player?key={API_KEY}&name={uuid_dashed}"
 #playerInfo = getInfo(uuid_link)
 
 playerInfo = json.load(open("EpicJAG.json","rt"))
-print(playerInfo["success"])
-if(playerInfo["success"]):
-    print(bwStats.getFinalKills(playerInfo, 0))
-    print(bwStats.getFinalKills(playerInfo, 1))
-    print(bwStats.getFinalKills(playerInfo, 2))
-    print(bwStats.getFinalKills(playerInfo, 3))
-    print(bwStats.getFinalKills(playerInfo, 4))
-    print(bwStats.getFinalKills(playerInfo, 5))
-    print(bwStats.getFinalKills(playerInfo, 6))
+#print("playerInfo["success"])
+print("Overall: %f" % (bwStats.getFKDR(playerInfo, 0)))
+print("Solos: %f" % (bwStats.getFKDR(playerInfo, 1)))
+print("Doubles: %f" % (bwStats.getFKDR(playerInfo, 2)))
+print("Threes: %f" % (bwStats.getFKDR(playerInfo, 3)))
+print("Fours: %f" % (bwStats.getFKDR(playerInfo, 4)))
+print("4v4: %f" % (bwStats.getFKDR(playerInfo, 5)))
+
 
 
     #print(bwStats.sayHi())
