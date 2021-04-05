@@ -35,12 +35,21 @@ name_link = f"https://api.hypixel.net/player?key={API_KEY}&name={name}"
 uuid_link = f"https://api.hypixel.net/player?key={API_KEY}&name={uuid_dashed}"
 
 #pprint(getInfo(name_link))
+#print(name_link)
 #pprint(uuid_link)
-print(uuid_link)
+#print(uuid_link)
 #playerInfo = getInfo(uuid_link)
 
-playerInfo = json.load(open("Youngthanael.json","rt"))
-
+playerInfo = json.load(open("EpicJAG.json","rt"))
+print(playerInfo["success"])
 if(playerInfo["success"]):
-    print(playerInfo["player"]["stats"]["Bedwars"]["bedwars_boxes"])
-    print(bwStats.sayHi())
+    print(bwStats.getFinalKills(playerInfo, 0))
+    print(bwStats.getFinalKills(playerInfo, 1))
+    print(bwStats.getFinalKills(playerInfo, 2))
+    print(bwStats.getFinalKills(playerInfo, 3))
+    print(bwStats.getFinalKills(playerInfo, 4))
+    print(bwStats.getFinalKills(playerInfo, 5))
+    print(bwStats.getFinalKills(playerInfo, 6))
+
+
+    #print(bwStats.sayHi())
