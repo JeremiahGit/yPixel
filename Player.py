@@ -13,7 +13,7 @@ import json
 class Player:
     staticTrackedPlayers = 0 #haha I'm pretending that there is a static keyword!!
 
-    def __init__(self,pData):
+    def __init__(self, pData):
         # I want to make and access a .json file for each instance of a player. This would be to circumvent 
         # rate limit on the player lookup. 
 
@@ -24,5 +24,15 @@ class Player:
 
         # Also record data points for the bedwars stats of a player and use that to eventually make a graph of
         # the player's stats. I think that would be cool. I can also do this for skywars
-        self.name = "eman"
-        self.uuid = "diuu"
+        
+        if(pData["success"]):
+            self.name = pData["player"]["displayname"]
+            self.uuid = pData["player"]["uuid"]
+            self.jsonFileName = f"{self.uuid}_{self.name}.json"
+
+            self._file = open(f".\\tempPlayerJsons\\{self.jsonFileName}","w+")
+            self._file.write(json.dumps(pData))
+            self._file.close()
+
+        else:
+            print("===========")

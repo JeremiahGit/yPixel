@@ -27,9 +27,9 @@ def getFinalKills(pData, index):
             5: pData["player"]["stats"]["Bedwars"]["two_four_final_kills_bedwars"],
             6: pData["player"]["stats"]["Bedwars"]["final_kills_bedwars"] #TODO
         }
-        return FINAL_KILLS_DICT.get(index, "ERROR: Invalid Final Kills index. Use a number in the inclusive range 0-6")
+        return FINAL_KILLS_DICT.get(index, "ERROR: Invalid index. Use a number in the inclusive range 0-6")
     elif (index > 6):
-        print("ERROR: Invalid index, please input index less than 6.")  
+        print("ERROR: Invalid index. Use a number in the inclusive range 0-6")  
 
         return -1
     else:
@@ -56,7 +56,7 @@ def getFinalDeaths(pData, index):
         }
         return FINAL_KILLS_DICT.get(index, "ERROR: Invalid Final Kills index. Use a number in the inclusive range 0-6")
     elif (index > 6):
-        print("ERROR: Invalid index, please input index less than 6.")  
+        print("ERROR: Invalid index. Use a number in the inclusive range 0-6")  
 
         return -1
     else:
