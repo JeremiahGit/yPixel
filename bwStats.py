@@ -73,4 +73,4 @@ def getFinalDeaths(pData, index):
 #      updated to match
 #
 def getFKDR(pData, index):
-    return float(getFinalKills(pData, index)) / getFinalDeaths(pData,index)
+        return float(getFinalKills(pData, index)) / getFinalDeaths(pData,index)
