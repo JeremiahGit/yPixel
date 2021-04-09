@@ -11,14 +11,19 @@
 import ytils
 import json
 import bwStats
+from pprint import pprint
 
 class Player:
-    #staticTrackedPlayers #haha I'm pretending that there is a static keyword!!
 
+    #
+    # Sets name, creates a file with name, sets a file location to be accessed later.
+    # Also want to record data points for the bedwars stats of a player and use that to eventually make a graph of
+    # the player's stats. I think that would be cool. I can also do this for skywars
+    #
     def __init__(self, USER_NAME):
-        self.temp_file = ytils.getInfo("https://api.hypixel.net/player?key=%s&name=%s" % (ytils.getAPIKey(), USER_NAME))
 
         self.name = USER_NAME
+        self.temp_file = ytils.getInfo("https://api.hypixel.net/player?key=%s&name=%s" % (ytils.getAPIKey(), self.name))
         self.FileLocation = f".\\tempPlayerJsons\\{self.name}.json"
 
         if(self.temp_file["success"]):
@@ -27,33 +32,28 @@ class Player:
             self.f.close()
 
         else:
-            print("ERROR: Player file likely exists. Cannot retreive new data from API for %s. Using an older version of %s's API data." % (self.name, self.name))
+            print("WARNING: Cannot create a new file %s. Using an older version of %s's API data." % (self.name, self.name))
 
-
-    #def __init__(self, pData):
-        # I want to make and access a .json file for each instance of a player. This would be to circumvent 
-        # rate limit on the player lookup. 
-
-        # Also I can store the time that I originally looked up the player so that I can know when its okay to
-        # look them up again. I would then delete their file and make a new one.
-        
-        # Also keep track of the mosed used player
-
-        # Also record data points for the bedwars stats of a player and use that to eventually make a graph of
-        # the player's stats. I think that would be cool. I can also do this for skywars
-        
-        #if(pData["success"]):
-        #    self.name = pData["player"]["displayname"]
-        #    self.uuid = pData["player"]["uuid"]
-        #    self.jsonFileName = f"{self.uuid}_{self.name}.json"
-        #
-        #    self._file = open(f".\\tempPlayerJsons\\{self.jsonFileName}","w+")
-        #    self._file.write(json.dumps(pData))
-        #    self._file.close()
-        #
-        #else:
-        #    print("ERROR: Player file likely exists. Cannot retreive new data from API.")
-
-
+    #
+    # A call to getPData() will return the player endpoint of the hypixel API as a json. The file should already be 
+    # created upon initialization.
+    #
     def getPData(self):
-        return open(self.FileLocation, "r").read().json()
+        return json.loads(open(self.FileLocation, "r").read()) #haha i hope this does not cause memory leaks...
+
+    #
+    # Get bedwars stats. bwStats.py has the source file and has documentation for the functions.
+    #
+    def getFKDR(self, index):
+        return bwStats.getFKDR(self.getPData(), index)
+
+    def getBWFinalKills(self, index):
+        return bwStats.getFinalKills(self.getPData(), index)
+
+    def getBWFinalDeaths(self, index):
+        return bwStats.getFinalDeaths(self.getPData(), index)
+
+
+    #
+    #
+    #

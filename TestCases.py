@@ -3,7 +3,6 @@ import json
 import bwStats
 from pprint import pprint
 from Player import Player # How werid is this... I need to do this for some reason...
-
 #
 # Returns a json
 #
@@ -24,12 +23,12 @@ name_link = f"https://api.hypixel.net/player?key={API_KEY}&name={name}"
 uuid_link = f"https://api.hypixel.net/player?key={API_KEY}&name={uuid_dashed}"
 
 #playerInfo = json.load(open("EpicJAG.json","rt"))
-obj1 = Player(name)
+p = Player(name)
 #print(uuid_link)
 #pprint(obj1.getPData())
 for i in range (5):
-    print("%d: %f" % (i, bwStats.getFKDR( obj1.getPData(), i) ))
-
+    #print("%d: %f" % (i, bwStats.getFKDR( p.getPData(), i) ))
+    print ("%d: %f" % (i, p.getFKDR(i) )) 
 #print(obj1.name)
 #print(obj1.uuid)
 
