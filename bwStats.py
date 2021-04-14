@@ -28,9 +28,6 @@ def getFinalKills(pData, index):
             6: pData["player"]["stats"]["Bedwars"]["final_kills_bedwars"] #TODO
         }
         return FINAL_KILLS_DICT.get(index, "ERROR: Invalid index. Use a number in the inclusive range 0-6")
-    elif (index > 6):
-        print("ERROR: Invalid index. Use a number in the inclusive range 0-6")
-        return -1
     else:
         print("ERROR: Invalid Player Data, please input valid player data.")  
         return -1
@@ -54,9 +51,6 @@ def getFinalDeaths(pData, index):
             6: pData["player"]["stats"]["Bedwars"]["final_deaths_bedwars"] #TODO
         }
         return FINAL_DEATHS_DICT.get(index, "ERROR: Invalid Final deaths index. Use a number in the inclusive range 0-6")
-    elif (index > 6):
-        print("ERROR: Invalid index. Use a number in the inclusive range 0-6")
-        return -1
     else:
         print("ERROR: Invalid Player Data, please input valid player data.")  
         return -1
@@ -82,7 +76,7 @@ def getFKDR(pData, index):
 #
 def getWins(pData, index):
     if(pData["success"]):
-        FINAL_KILLS_DICT = {
+        WINS_DICT = {
             0: pData["player"]["stats"]["Bedwars"]["wins_bedwars"],
             1: pData["player"]["stats"]["Bedwars"]["eight_one_wins_bedwars"],
             2: pData["player"]["stats"]["Bedwars"]["eight_two_wins_bedwars"],
@@ -91,10 +85,7 @@ def getWins(pData, index):
             5: pData["player"]["stats"]["Bedwars"]["two_four_wins_bedwars"],
             6: pData["player"]["stats"]["Bedwars"]["wins_bedwars"] #TODO
         }
-        return FINAL_KILLS_DICT.get(index, "ERROR: Invalid index. Use a number in the inclusive range 0-6")
-    elif (index > 6):
-        print("ERROR: Invalid index. Use a number in the inclusive range 0-6")
-        return -1
+        return WINS_DICT.get(index, "ERROR: Invalid index. Use a number in the inclusive range 0-6")
     else:
         print("ERROR: Invalid Player Data, please input valid player data.")  
         return -1
@@ -108,7 +99,7 @@ def getWins(pData, index):
 #
 def getLosses(pData, index):
     if(pData["success"]):
-        FINAL_KILLS_DICT = {
+        LOSSES_DICT = {
             0: pData["player"]["stats"]["Bedwars"]["losses_bedwars"],
             1: pData["player"]["stats"]["Bedwars"]["eight_one_losses_bedwars"],
             2: pData["player"]["stats"]["Bedwars"]["eight_two_losses_bedwars"],
@@ -117,10 +108,7 @@ def getLosses(pData, index):
             5: pData["player"]["stats"]["Bedwars"]["two_four_losses_bedwars"],
             6: pData["player"]["stats"]["Bedwars"]["losses_bedwars"] #TODO
         }
-        return FINAL_KILLS_DICT.get(index, "ERROR: Invalid index. Use a number in the inclusive range 0-6")
-    elif (index > 6):
-        print("ERROR: Invalid index. Use a number in the inclusive range 0-6")
-        return -1
+        return LOSSES_DICT.get(index, "ERROR: Invalid index. Use a number in the inclusive range 0-6")
     else:
         print("ERROR: Invalid Player Data, please input valid player data.")  
         return -1

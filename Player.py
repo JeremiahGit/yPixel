@@ -39,7 +39,7 @@ class Player:
     # created upon initialization.
     #
     def getPData(self):
-        return json.loads(open(self.FileLocation, "r").read()) #haha i hope this does not cause memory leaks...
+        return json.loads(open(self.FileLocation, "r").read()) #haha i hope this does not cause memory leaks because i dont explicitly close the file...
 
     #
     # Get bedwars stats. bwStats.py has the source file and has documentation for the functions.
@@ -52,6 +52,15 @@ class Player:
 
     def getBWFinalDeaths(self, index):
         return bwStats.getFinalDeaths(self.getPData(), index)
+
+    def getBWWL(self, index):
+        return bwStats.getWLRatio(self.getPData(), index)
+
+    def getBWWins(self, index):
+        return bwStats.getWins(self.getPData(), index)
+
+    def getBWLosses(self, index):
+        return bwStats.getLosses(self.getPData(), index)
 
 
     #
