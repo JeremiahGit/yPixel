@@ -23,7 +23,7 @@ name_link = f"https://api.hypixel.net/player?key={API_KEY}&name={name}"
 uuid_link = f"https://api.hypixel.net/player?key={API_KEY}&name={uuid_dashed}"
 
 #playerInfo = json.load(open("EpicJAG.json","rt"))
-p = Player(name)
+p = Player("Chazm")
 #print(uuid_link)
 #pprint(obj1.getPData())
 for i in range (5):

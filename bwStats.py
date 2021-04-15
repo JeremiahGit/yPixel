@@ -1,9 +1,9 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# bwStats.py or BedWarsStats has useful functions for getting and returning useful information about a player's      #
+# bwStats.py or BedWarsStats has useful functions for getting and returning useful information about a player's       #
 # bedwars stats.                                                                                                      #
 #                                                                                                                     #
-#                                                                                                                     #
-#                                                                                                                     #
+# TODO I have encountered and error. If a player does not have a Final Death and it is attempted to access it i get   #
+# an error!!!!                                                                                                        #
 #                                                                                                                     #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 import requests
@@ -108,7 +108,10 @@ def getLosses(pData, index):
             5: pData["player"]["stats"]["Bedwars"]["two_four_losses_bedwars"],
             6: pData["player"]["stats"]["Bedwars"]["losses_bedwars"] #TODO
         }
-        return LOSSES_DICT.get(index, "ERROR: Invalid index. Use a number in the inclusive range 0-6")
+        try:
+            return LOSSES_DICT.get(index, "ERROR: Invalid index. Use a number in the inclusive range 0-6")
+        except KeyError:
+            return 1
     else:
         print("ERROR: Invalid Player Data, please input valid player data.")  
         return -1
