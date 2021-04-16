@@ -3,11 +3,18 @@
 # bedwars stats.                                                                                                      #
 #                                                                                                                     #
 # TODO I have encountered and error. If a player does not have a Final Death and it is attempted to access it i get   #
-# an error!!!!                                                                                                        #
+# an error!!!!     also happens with kills                                                                            #
 #                                                                                                                     #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-import requests
 import json
+
+#
+# Returns the number of stars a player has
+#
+def getStar(pData):
+    if(pData["success"]):
+            return pData["player"]["achievements"]["bedwars_level"]
+
 
 #
 # Returns final kills of a player

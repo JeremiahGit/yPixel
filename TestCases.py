@@ -23,12 +23,14 @@ name_link = f"https://api.hypixel.net/player?key={API_KEY}&name={name}"
 uuid_link = f"https://api.hypixel.net/player?key={API_KEY}&name={uuid_dashed}"
 
 #playerInfo = json.load(open("EpicJAG.json","rt"))
-p = Player("Chazm")
+p = Player("chazm")
 #print(uuid_link)
 #pprint(obj1.getPData())
+print(p.getBWAbyssScore())
 for i in range (5):
     #print("%d: %f" % (i, bwStats.getFKDR( p.getPData(), i) ))
-    print ("%d: %f" % (i, p.getFKDR(i) )) 
+    print ("FKDR %d: %f" % (i, p.getFKDR(i) )) 
+    print ("WL %d: %f" % (i, p.getBWWL(i) )) 
 #print(obj1.name)
 #print(obj1.uuid)
 
