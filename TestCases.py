@@ -17,13 +17,22 @@ uuid_link = f"https://api.hypixel.net/player?key={API_KEY}&name={uuid_dashed}"
 ppl = Players()
 
 ppl.add("EpicJAG")
+#ppl.add("Youngthanael")
 ppl.add("Gamerboy80")
 ppl.add("Manhal_iq_")
+ppl.add("Purpled")
+ppl.add("Vixon")
+ppl.add("Skilled")
+ppl.add("b0mbies")
+ppl.add("wqlf")
+ppl.add("dogcatwhat")
+ppl.add("luvonox")
+
 
 pl = ppl.getPlayers()
 
 for gamer in pl:
-    print(f"================{gamer.name}================")
+    print(f"================ [{gamer.getBWSstar()}] {gamer.name} {gamer.getBWAbyssScore()} ================")
     for i in range (5):
         #print("%d: %f" % (i, bwStats.getFKDR( p.getPData(), i) ))
         print ("FKDR %d: %f" % (i, gamer.getFKDR(i) )) 
