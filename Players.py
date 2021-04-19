@@ -10,8 +10,35 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 import json
-import Player
+from Player import Player
 import ytils
+
+playerList = []
 
 class Players:
     
+    def __init__(self):
+        print("Initalizing Players Class") #idk if this will ever be usefull
+
+    def add(self, name):
+        temp = Player(name)
+        playerList.append(temp)
+
+    def clear(self, name):
+        playerList.clear()
+
+    def getPlayers(self):
+        return playerList.copy()
+    
+    def getPlayersCount(self):
+        return playerList.count()
+
+    def removePlayer(self, name):
+        temp = Player(name)
+        playerList.remove(temp)
+
+
+
+    
+    
+        

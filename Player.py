@@ -44,22 +44,22 @@ class Player:
     # Get bedwars stats. bwStats.py has the source file and has documentation for the functions.
     #
     def getFKDR(self, index):
-        return bwStats.getFKDR(self.getPData(), index)
+        return round( bwStats.getFKDR(self.getPData(), index), 2)
 
     def getBWFinalKills(self, index):
-        return bwStats.getFinalKills(self.getPData(), index)
+        return round( bwStats.getFinalKills(self.getPData(), index), 2)
 
     def getBWFinalDeaths(self, index):
-        return bwStats.getFinalDeaths(self.getPData(), index)
+        return round( bwStats.getFinalDeaths(self.getPData(), index), 2)
 
     def getBWWL(self, index):
-        return bwStats.getWLRatio(self.getPData(), index)
+        return round( bwStats.getWLRatio(self.getPData(), index), 2)
 
     def getBWWins(self, index):
-        return bwStats.getWins(self.getPData(), index)
+        return round( bwStats.getWins(self.getPData(), index), 2)
 
     def getBWLosses(self, index):
-        return bwStats.getLosses(self.getPData(), index)
+        return round( bwStats.getLosses(self.getPData(), index), 2)
 
     #
     # Abyss Scre is a special way for measuring the skill and experence of a bedwars player. It comes from the
