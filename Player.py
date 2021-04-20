@@ -62,7 +62,8 @@ class Player:
         return round( bwStats.getLosses(self.getPData(), index), 2)
 
     def getBWStar(self):
-        return bwStats.getStar(self.getPData)
+        star =  bwStats.getStar(self.getPData)
+        return star
 
     #
     # Abyss Scre is a special way for measuring the skill and experence of a bedwars player. It comes from the

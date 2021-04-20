@@ -12,8 +12,9 @@ import json
 # Returns the number of stars a player has
 #
 def getStar(pData):
-    if(pData["success"]):
-            return pData["player"]["achievements"]["bedwars_level"]
+    if(pData["success"] == True):
+        return pData["player"]["achievements"]["bedwars_level"]
+    
 
 
 #

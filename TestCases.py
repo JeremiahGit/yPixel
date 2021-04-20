@@ -23,8 +23,8 @@ ppl.add("Manhal_iq_")
 ppl.add("Purpled")
 ppl.add("Vixon")
 ppl.add("Skilled")
-ppl.add("b0mbies")
-ppl.add("wqlf")
+#ppl.add("b0mbies")
+ppl.add("wqlff")
 ppl.add("dogcatwhat")
 ppl.add("luvonox")
 
@@ -32,11 +32,12 @@ ppl.add("luvonox")
 pl = ppl.getPlayers()
 
 for gamer in pl:
-    print(f"================ [{gamer.getBWSstar()}] {gamer.name} {gamer.getBWAbyssScore()} ================")
-    for i in range (5):
+    print(f"================ [•] {gamer.name} {gamer.getBWAbyssScore()} ================")
+    for i in range (1):
         #print("%d: %f" % (i, bwStats.getFKDR( p.getPData(), i) ))
-        print ("FKDR %d: %f" % (i, gamer.getFKDR(i) )) 
-        print ("WL %d: %f" % (i, gamer.getBWWL(i) )) 
+        print(gamer.getBWStar())
+        print ("FKDR: %f" % (gamer.getFKDR(i) )) 
+        print ("WL: %f" % (gamer.getBWWL(i) )) 
 #print(obj1.name)
 #print(obj1.uuid)
 
