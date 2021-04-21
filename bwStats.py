@@ -9,37 +9,47 @@
 import json
 
 #
+# The bedwars mode stats are getting called for. The value passed in is usually index. However, there are some other names that can be used
+# 0 Overall, 1 Solos, 2 Doubles, 3 Threes, 4 Fours, 5 4v4
+#
+BEDWARS_MODE_DICT = {
+    0: "",
+    1: "eight_one_final_",
+    2: "eight_two_final_",
+    3: "four_three_final_",
+    4: "four_four_final_",
+    5: "two_four_final_",
+
+    "overall": "",
+    "solos": "eight_one_final_",
+    "doubles": "eight_two_final_",
+    "threes": "four_three_final_",
+    "fours": "four_four_final_",
+    "4v4": "two_four_final_",
+    }
+
+#
 # Returns the number of stars a player has
 #
 def getStar(pData):
-    if(pData["success"] == True):
-        return pData["player"]["achievements"]["bedwars_level"]
-    
-
+    if(pData["success"]):
+        try:
+            return pData["player"]["achievements"]["bedwars_level"]
+        except:
+            return 0
 
 #
 # Returns final kills of a player
 # @parameter pData = player data .json file
 # @parameter index = What Bedwars mode to get number of final kills from
-#                    0 Overall, 1 Solos, 2 Doubles, 3 Threes, 4 Fours, 5 4v4, 6 Dreams
-# TODO overall Dreams bedwars final kills
 #
 def getFinalKills(pData, index):
     if(pData["success"]):
-        FINAL_KILLS_DICT = {
-            0: pData["player"]["stats"]["Bedwars"]["final_kills_bedwars"],
-            1: pData["player"]["stats"]["Bedwars"]["eight_one_final_kills_bedwars"],
-            2: pData["player"]["stats"]["Bedwars"]["eight_two_final_kills_bedwars"],
-            3: pData["player"]["stats"]["Bedwars"]["four_three_final_kills_bedwars"],
-            4: pData["player"]["stats"]["Bedwars"]["four_four_final_kills_bedwars"],
-            5: pData["player"]["stats"]["Bedwars"]["two_four_final_kills_bedwars"],
-            6: pData["player"]["stats"]["Bedwars"]["final_kills_bedwars"] #TODO
-        }
-        return FINAL_KILLS_DICT.get(index, "ERROR: Invalid index. Use a number in the inclusive range 0-6")
-    else:
-        print("ERROR: Invalid Player Data, please input valid player data.")  
-        return -1
-
+        try:
+            bedwarsMode = BEDWARS_MODE_DICT.get(index)
+            return pData["player"]["stats"]["Bedwars"]["%sfinal_kills_bedwars" % (bedwarsMode)]
+        except:
+            return 0
 #
 # Returns final deaths of a player
 # @parameter pData = player data .json file
@@ -49,20 +59,11 @@ def getFinalKills(pData, index):
 #
 def getFinalDeaths(pData, index):
     if(pData["success"]):
-        FINAL_DEATHS_DICT = {
-            0: pData["player"]["stats"]["Bedwars"]["final_deaths_bedwars"],
-            1: pData["player"]["stats"]["Bedwars"]["eight_one_final_deaths_bedwars"],
-            2: pData["player"]["stats"]["Bedwars"]["eight_two_final_deaths_bedwars"],
-            3: pData["player"]["stats"]["Bedwars"]["four_three_final_deaths_bedwars"],
-            4: pData["player"]["stats"]["Bedwars"]["four_four_final_deaths_bedwars"],
-            5: pData["player"]["stats"]["Bedwars"]["two_four_final_deaths_bedwars"],
-            6: pData["player"]["stats"]["Bedwars"]["final_deaths_bedwars"] #TODO
-        }
-        return FINAL_DEATHS_DICT.get(index, "ERROR: Invalid Final deaths index. Use a number in the inclusive range 0-6")
-    else:
-        print("ERROR: Invalid Player Data, please input valid player data.")  
-        return -1
-
+        try:
+            bedwarsMode = BEDWARS_MODE_DICT.get(index)
+            return pData["player"]["stats"]["Bedwars"]["%sfinal_deaths_bedwars" % (bedwarsMode)]
+        except:
+            return 1
 #
 # Returns final kill death ratio aka FKDR
 # @parameter pData = player data .json file
@@ -79,25 +80,14 @@ def getFKDR(pData, index):
 # Returns wins of a player
 # @parameter pData = player data .json file
 # @parameter index = What Bedwars mode to get number of wins from
-#                    0 Overall, 1 Solos, 2 Doubles, 3 Threes, 4 Fours, 5 4v4, 6 Dreams
-# TODO overall dream wins
 #
 def getWins(pData, index):
     if(pData["success"]):
-        WINS_DICT = {
-            0: pData["player"]["stats"]["Bedwars"]["wins_bedwars"],
-            1: pData["player"]["stats"]["Bedwars"]["eight_one_wins_bedwars"],
-            2: pData["player"]["stats"]["Bedwars"]["eight_two_wins_bedwars"],
-            3: pData["player"]["stats"]["Bedwars"]["four_three_wins_bedwars"],
-            4: pData["player"]["stats"]["Bedwars"]["four_four_wins_bedwars"],
-            5: pData["player"]["stats"]["Bedwars"]["two_four_wins_bedwars"],
-            6: pData["player"]["stats"]["Bedwars"]["wins_bedwars"] #TODO
-        }
-        return WINS_DICT.get(index, "ERROR: Invalid index. Use a number in the inclusive range 0-6")
-    else:
-        print("ERROR: Invalid Player Data, please input valid player data.")  
-        return -1
-
+        try:
+            bedwarsMode = BEDWARS_MODE_DICT.get(index)
+            return pData["player"]["stats"]["Bedwars"]["%swins_bedwars" % (bedwarsMode)]
+        except:
+            return 0
 #
 # Returns losses of a player
 # @parameter pData = player data .json file
@@ -107,23 +97,16 @@ def getWins(pData, index):
 #
 def getLosses(pData, index):
     if(pData["success"]):
-        LOSSES_DICT = {
-            0: pData["player"]["stats"]["Bedwars"]["losses_bedwars"],
-            1: pData["player"]["stats"]["Bedwars"]["eight_one_losses_bedwars"],
-            2: pData["player"]["stats"]["Bedwars"]["eight_two_losses_bedwars"],
-            3: pData["player"]["stats"]["Bedwars"]["four_three_losses_bedwars"],
-            4: pData["player"]["stats"]["Bedwars"]["four_four_losses_bedwars"],
-            5: pData["player"]["stats"]["Bedwars"]["two_four_losses_bedwars"],
-            6: pData["player"]["stats"]["Bedwars"]["losses_bedwars"] #TODO
-        }
-        try:
-            return LOSSES_DICT.get(index, "ERROR: Invalid index. Use a number in the inclusive range 0-6")
-        except KeyError:
-            return 1
-    else:
-        print("ERROR: Invalid Player Data, please input valid player data.")  
-        return -1
-
+        #try:
+        bedwarsMode = BEDWARS_MODE_DICT.get(index)
+        print("+++++++++++")
+        WL = pData["player"]["stats"]["Bedwars"]["%flosses_bedwars" % (bedwarsMode)]
+        print("--------")
+        print(WL)
+        print("========")
+        return WL
+        #except:
+        #   return 1.0
 #
 # Returns the win loss ratio aka FKDR
 # @parameter pData = player data .json file
@@ -134,4 +117,6 @@ def getLosses(pData, index):
 #      updated to match
 #
 def getWLRatio(pData, index):
-    return float(getWins(pData, index)) / getLosses(pData,index)
+    wl = float(  float(getWins(pData, index)) / float(getLosses(pData, index))  )
+    print(";;;;;;;;;;")
+    return wl
