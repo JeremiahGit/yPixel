@@ -63,18 +63,20 @@ def getFinalDeaths(pData, index):
             bedwarsMode = BEDWARS_MODE_DICT.get(index)
             return pData["player"]["stats"]["Bedwars"]["%sfinal_deaths_bedwars" % (bedwarsMode)]
         except:
-            return 1
+            return 0
 #
 # Returns final kill death ratio aka FKDR
 # @parameter pData = player data .json file
 # @parameter index = What Bedwars mode to get number of final kills from
-#                    0 Overall, 1 Solos, 2 Doubles, 3 Threes, 4 Fours, 5 4v4, 6 Dreams
 # TODO Manually remoce the 4v4 Final Kills and deaths from the calculated overall FKDR.
 #      It seems that in the update where 4v4 was removed from stats, the API was not 
 #      updated to match
 #
 def getFKDR(pData, index):
-    return float(getFinalKills(pData, index)) / getFinalDeaths(pData,index)
+    try:
+        return float(getFinalKills(pData, index)) / getFinalDeaths(pData,index)
+    except:
+        return float( getFinalKills(pData, index) )
 
 #
 # Returns wins of a player
@@ -92,31 +94,24 @@ def getWins(pData, index):
 # Returns losses of a player
 # @parameter pData = player data .json file
 # @parameter index = What Bedwars mode to get number of losses from
-#                    0 Overall, 1 Solos, 2 Doubles, 3 Threes, 4 Fours, 5 4v4, 6 Dreams
-# TODO overall dream losses
 #
 def getLosses(pData, index):
     if(pData["success"]):
-        #try:
-        bedwarsMode = BEDWARS_MODE_DICT.get(index)
-        print("+++++++++++")
-        WL = pData["player"]["stats"]["Bedwars"]["%flosses_bedwars" % (bedwarsMode)]
-        print("--------")
-        print(WL)
-        print("========")
-        return WL
-        #except:
-        #   return 1.0
+        try:
+            bedwarsMode = BEDWARS_MODE_DICT.get(index)
+            return pData["player"]["stats"]["Bedwars"]["%slosses_bedwars" % (bedwarsMode)]
+        except:
+           return 0
 #
 # Returns the win loss ratio aka FKDR
 # @parameter pData = player data .json file
 # @parameter index = What Bedwars mode to get number of final kills from
-#                    0 Overall, 1 Solos, 2 Doubles, 3 Threes, 4 Fours, 5 4v4, 6 Dreams
 # TODO Manually remoce the 4v4 wins and losses from the calculated overall FKDR.
 #      It seems that in the update where 4v4 was removed from stats, the API was not 
 #      updated to match
 #
 def getWLRatio(pData, index):
-    wl = float(  float(getWins(pData, index)) / float(getLosses(pData, index))  )
-    print(";;;;;;;;;;")
-    return wl
+    try:
+       return float(  getWins(pData, index) / getLosses(pData, index)  )
+    except:
+        return float( getWins(pData, index) )
