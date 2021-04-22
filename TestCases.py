@@ -18,19 +18,16 @@ ppl = Players()
 
 ppl.add("EpicJAG")
 ppl.add("Youngthanael")
-ppl.add("Gamerboy80")
+#ppl.add("Gamerboy80")
 ppl.add("Manhal_iq_")
 ppl.add("Purpled")
 ppl.add("Vixon")
-ppl.add("Skilled")
+ppl.add("Chazm")
 ppl.add("b0mbies")
 ppl.add("wqlff")
 ppl.add("dogcatwhat")
 ppl.add("luvonox")
 pl = ppl.getPlayers()
-#for gamer in pl:
-#    print(f"================ [•] {gamer.name} {gamer.getBWAbyssScore()} ================")
-#    print(gamer.getFKDR(0))
 
 for gamer in pl:
     print(f"================ [✫ {gamer.getBWStar()}] {gamer.name} {gamer.getBWAbyssScore()} ================")
