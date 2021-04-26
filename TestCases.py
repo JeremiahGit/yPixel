@@ -15,18 +15,19 @@ API_KEY = "961552cb-f9e4-4f25-b7dd-1cad11fe4f3d"
 name_link = f"https://api.hypixel.net/player?key={API_KEY}&name={name}"
 uuid_link = f"https://api.hypixel.net/player?key={API_KEY}&name={uuid_dashed}"
 ppl = Players()
+ppl.add("grhigrakn;sgr")
 
-ppl.add("EpicJAG")
-ppl.add("Youngthanael")
+#ppl.add("EpicJAG")
+#ppl.add("Youngthanael")
 #ppl.add("Gamerboy80")
-ppl.add("Manhal_iq_")
-ppl.add("Purpled")
-ppl.add("Vixon")
-ppl.add("Chazm")
-ppl.add("b0mbies")
-ppl.add("wqlff")
-ppl.add("dogcatwhat")
-ppl.add("luvonox")
+#ppl.add("Manhal_iq_")
+#ppl.add("Purpled")
+#ppl.add("Vixon")
+#ppl.add("Chazm")
+#ppl.add("b0mbies")
+#ppl.add("wqlff")
+#ppl.add("dogcatwhat")
+#ppl.add("luvonox")
 pl = ppl.getPlayers()
 
 for gamer in pl:

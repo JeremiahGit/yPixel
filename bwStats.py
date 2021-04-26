@@ -2,8 +2,6 @@
 # bwStats.py or BedWarsStats has useful functions for getting and returning useful information about a player's       #
 # bedwars stats.                                                                                                      #
 #                                                                                                                     #
-# TODO I have encountered and error. If a player does not have a Final Death and it is attempted to access it i get   #
-# an error!!!!     also happens with kills                                                                            #
 #                                                                                                                     #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 import json
@@ -38,11 +36,12 @@ def getStar(pData):
         except:
             return 0
 
-#
-# Returns final kills of a player
-# @parameter pData = player data .json file
-# @parameter index = What Bedwars mode to get number of final kills from
-#
+# # # # # # # # # # # # # # # # # # # # # Essential Stats # # # # # # # # # # # # # # # # # # # # # # #
+# Returns [STATISTICS] of a player                                                                    #
+# @parameter pData = player data .json file                                                           #
+# @parameter index = What Bedwars mode to get STATS from. As axplained in BEDWARS_MODE_DICT.          #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 def getFinalKills(pData, index):
     if(pData["success"]):
         try:
@@ -50,13 +49,7 @@ def getFinalKills(pData, index):
             return pData["player"]["stats"]["Bedwars"]["%sfinal_kills_bedwars" % (bedwarsMode)]
         except:
             return 0
-#
-# Returns final deaths of a player
-# @parameter pData = player data .json file
-# @parameter index = What Bedwars mode to get number of final kills from
-#                    0 Overall, 1 Solos, 2 Doubles, 3 Threes, 4 Fours, 5 4v4, 6 Dreams
-# TODO overall Dreams bedwars final deaths
-#
+
 def getFinalDeaths(pData, index):
     if(pData["success"]):
         try:
@@ -64,25 +57,7 @@ def getFinalDeaths(pData, index):
             return pData["player"]["stats"]["Bedwars"]["%sfinal_deaths_bedwars" % (bedwarsMode)]
         except:
             return 0
-#
-# Returns final kill death ratio aka FKDR
-# @parameter pData = player data .json file
-# @parameter index = What Bedwars mode to get number of final kills from
-# TODO Manually remoce the 4v4 Final Kills and deaths from the calculated overall FKDR.
-#      It seems that in the update where 4v4 was removed from stats, the API was not 
-#      updated to match
-#
-def getFKDR(pData, index):
-    try:
-        return float(getFinalKills(pData, index)) / getFinalDeaths(pData,index)
-    except:
-        return float( getFinalKills(pData, index) )
 
-#
-# Returns wins of a player
-# @parameter pData = player data .json file
-# @parameter index = What Bedwars mode to get number of wins from
-#
 def getWins(pData, index):
     if(pData["success"]):
         try:
@@ -90,11 +65,7 @@ def getWins(pData, index):
             return pData["player"]["stats"]["Bedwars"]["%swins_bedwars" % (bedwarsMode)]
         except:
             return 0
-#
-# Returns losses of a player
-# @parameter pData = player data .json file
-# @parameter index = What Bedwars mode to get number of losses from
-#
+
 def getLosses(pData, index):
     if(pData["success"]):
         try:
@@ -103,9 +74,7 @@ def getLosses(pData, index):
         except:
            return 0
 #
-# Returns the win loss ratio aka FKDR
-# @parameter pData = player data .json file
-# @parameter index = What Bedwars mode to get number of final kills from
+# Win Loss Ratio
 # TODO Manually remoce the 4v4 wins and losses from the calculated overall FKDR.
 #      It seems that in the update where 4v4 was removed from stats, the API was not 
 #      updated to match
@@ -115,3 +84,91 @@ def getWLRatio(pData, index):
        return float(  getWins(pData, index) / getLosses(pData, index)  )
     except:
         return float( getWins(pData, index) )
+
+#
+# Returns final kill death ratio aka FKDR
+# TODO Manually remoce the 4v4 Final Kills and deaths from the calculated overall FKDR.
+#      It seems that in the update where 4v4 was removed from stats, the API was not 
+#      updated to match
+#
+def getFKDR(pData, index):
+    try:
+        return float( getFinalKills(pData, index)) / getFinalDeaths(pData,index )
+    except:
+        return float( getFinalKills(pData, index) )
+
+
+# # # # # # # # # # # # # # # # # # # # # Accessory Stats # # # # # # # # # # # # # # # # # # # # # # #
+# Returns [STATISTICS] of a player                                                                    #
+# @parameter pData = player data .json file                                                           #
+# @parameter index = What Bedwars mode to get STATS from. As axplained in BEDWARS_MODE_DICT.          #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def getWinstreak(pData, index):
+    try:
+        bedwarsMode = BEDWARS_MODE_DICT.get(index)
+        return pData["player"]["stats"]["Bedwars"]["%swinstreak" % (bedwarsMode)]
+    except:
+        return 0
+
+def getBedsBroken(pData, index):
+    try:
+        bedwarsMode = BEDWARS_MODE_DICT.get(index)
+        return pData["player"]["stats"]["Bedwars"]["%sbeds_broken_bedwars" % (bedwarsMode)]
+    except:
+        return 0
+
+def getBedsLost(pData, index):
+    try:
+        bedwarsMode = BEDWARS_MODE_DICT.get(index)
+        return pData["player"]["stats"]["Bedwars"]["%sbeds_lost_bedwars" % (bedwarsMode)]
+    except:
+        return 0
+
+def getKills(pData, index):
+    try:
+        bedwarsMode = BEDWARS_MODE_DICT.get(index)
+        return pData["player"]["stats"]["Bedwars"]["%skills_bedwars" % (bedwarsMode)]
+    except:
+        return 0
+
+def getDeaths(pData, index):
+    try:
+        bedwarsMode = BEDWARS_MODE_DICT.get(index)
+        return pData["player"]["stats"]["Bedwars"]["%sdeaths_bedwars" % (bedwarsMode)]
+    except:
+        return 0
+
+def getBBRLRatio(pData, index):
+    try:
+        return float( getBedsBroken(pData, index)) / getBedsLost(pData,index )
+    except:
+        return float( getBedsBroken(pData, index) )
+
+def getKDRatio(pData, index):
+    try:
+        return float( getKills(pData, index)) / getDeaths(pData,index )
+    except:
+        return float( getKills(pData, index) )
+
+#
+# TODO OMG IDEA. USING THE QUICKSHOP YOU CAN SEE WHAT TYPES OF ITEMS A PLAYER BUYS. AKA LADDERS LADDERS LADDER SWEAT, LADDER USER DETECTOR???????? ACTUALLY OP????????????
+# LADDER USER LADDER USER LADDER USER?????? 
+# Use an array to do things?
+#
+def quickshop(pData):
+    try:
+        return pData["player"]["stats"]["Bedwars"]["favourites_2"]
+    except:
+        return 0
+
+def hotbar(pData):
+    try:
+        return pData["player"]["stats"]["Bedwars"]["favorite_slots"]
+    except:
+        return 0
+#
+# TODO, use quick shop to find out
+#
+def isLadderUser(pData):
+    return -1
