@@ -15,13 +15,13 @@ API_KEY = "961552cb-f9e4-4f25-b7dd-1cad11fe4f3d"
 name_link = f"https://api.hypixel.net/player?key={API_KEY}&name={name}"
 uuid_link = f"https://api.hypixel.net/player?key={API_KEY}&name={uuid_dashed}"
 ppl = Players()
-ppl.add("grhigrakn;sgr")
+#ppl.add("grhigrakn;sgr")
 
 #ppl.add("EpicJAG")
-#ppl.add("Youngthanael")
+ppl.add("Youngthanael")
 #ppl.add("Gamerboy80")
 #ppl.add("Manhal_iq_")
-#ppl.add("Purpled")
+ppl.add("Purpled")
 #ppl.add("Vixon")
 #ppl.add("Chazm")
 #ppl.add("b0mbies")
@@ -35,12 +35,13 @@ for gamer in pl:
     for i in range (1):
         #print("%d: %f" % (i, bwStats.getFKDR( p.getPData(), i) ))
         #print(gamer.getBWStar())
-        print ("FKDR: %f" % (gamer.getFKDR(i) )) 
+        print("FKDR: %f" % (gamer.getFKDR(i) )) 
         #print ("Finals: %f" % (gamer.getBWFinalKills(i) )) 
         #print ("FDeaths: %f" % (gamer.getBWFinalDeaths(i) )) 
         #print ("Wins: %f" % (gamer.getBWWins(i) )) 
         #print ("Losses: %f" % (gamer.getBWLosses(i) )) 
-        print ("W/L: %f" % (gamer.getBWWL(i) )) 
+        print("W/L: %f" % (gamer.getBWWL(i) ))
+        print(gamer.isLadderUser())
 #print(obj1.name)
 #print(obj1.uuid)
 

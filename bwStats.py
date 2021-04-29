@@ -156,13 +156,13 @@ def getKDRatio(pData, index):
 # LADDER USER LADDER USER LADDER USER?????? 
 # Use an array to do things?
 #
-def quickshop(pData):
+def getquickshop(pData):
     try:
         return pData["player"]["stats"]["Bedwars"]["favourites_2"]
     except:
         return 0
 
-def hotbar(pData):
+def gethotbar(pData):
     try:
         return pData["player"]["stats"]["Bedwars"]["favorite_slots"]
     except:
@@ -171,4 +171,7 @@ def hotbar(pData):
 # TODO, use quick shop to find out
 #
 def isLadderUser(pData):
+    return (getquickshop(pData).find("ladder") > -1)
+
+def getBedDefenceBlocks(pdata):
     return -1

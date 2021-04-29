@@ -69,6 +69,12 @@ class Player:
         return bwStats.getStar(self.getPData())
 
     #
+    # Non-essencial functions
+    #
+    def isLadderUser(self):
+        return bwStats.isLadderUser(self.getPData())
+
+    #
     # Abyss Scre is a special way for measuring the skill and experence of a bedwars player. It comes from the
     # hypixel guild ABYSS and is calculated by the following formula:   Score = FKDR^2 * STAR
     #
