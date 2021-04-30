@@ -5,7 +5,12 @@ import ytils
 from pprint import pprint
 from Player import Player # How werid is this... I need to do this for some reason...
 from Players import Players
+from termcolor import colored, cprint
 
+#
+# https://pypi.org/project/termcolor/
+#
+#
 name = "EpicJAG"
 
 uuid = "d6544c1c-d8d9-4140-beaf-b52e4e7d09c0"    
@@ -17,18 +22,19 @@ uuid_link = f"https://api.hypixel.net/player?key={API_KEY}&name={uuid_dashed}"
 ppl = Players()
 #ppl.add("grhigrakn;sgr")
 
-#ppl.add("EpicJAG")
+ppl.add("EpicJAG")
 ppl.add("Youngthanael")
-#ppl.add("Gamerboy80")
-#ppl.add("Manhal_iq_")
+ppl.add("Gamerboy80")
+ppl.add("Manhal_iq_")
 ppl.add("Purpled")
-#ppl.add("Vixon")
-#ppl.add("Chazm")
-#ppl.add("b0mbies")
-#ppl.add("wqlff")
-#ppl.add("dogcatwhat")
-#ppl.add("luvonox")
+ppl.add("Vixon")
+ppl.add("Chazm")
+ppl.add("b0mbies")
+ppl.add("wqlff")
+ppl.add("dogcatwhat")
+ppl.add("luvonox")
 pl = ppl.getPlayers()
+print(colored('hello', 'red'), colored('world', 'green'))
 
 for gamer in pl:
     print(f"================ [✫ {gamer.getBWStar()}] {gamer.name} {gamer.getBWAbyssScore()} ================")
